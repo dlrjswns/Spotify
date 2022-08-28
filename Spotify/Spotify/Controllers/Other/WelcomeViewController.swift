@@ -24,6 +24,10 @@ class WelcomeViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        signInButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 10).isActive = true
+        signInButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
+        signInButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50).isActive = true
         
     }
     
@@ -37,7 +41,16 @@ class WelcomeViewController: UIViewController {
     
     @objc func didTappedSignIn() {
         let vc = AuthViewController()
+        vc.completionHandler = { [weak self] success in
+            DispatchQueue.main.async {
+                self?.handleSignIn(success: success)
+            }
+        }
         vc.navigationItem.largeTitleDisplayMode = .never
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func handleSignIn(success: Bool) {
+        
     }
 }
