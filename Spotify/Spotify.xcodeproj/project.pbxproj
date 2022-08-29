@@ -32,6 +32,7 @@
 		7050FADB28B85C5A00D5C429 /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FADA28B85C5A00D5C429 /* AudioTrack.swift */; };
 		7050FADD28B85C6B00D5C429 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FADC28B85C6B00D5C429 /* Artist.swift */; };
 		7050FADF28B85C7800D5C429 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FADE28B85C7800D5C429 /* UserProfile.swift */; };
+		7050FAE128BB8A1700D5C429 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAE028BB8A1700D5C429 /* AuthResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,7 @@
 		7050FADA28B85C5A00D5C429 /* AudioTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
 		7050FADC28B85C6B00D5C429 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		7050FADE28B85C7800D5C429 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		7050FAE028BB8A1700D5C429 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				7050FADA28B85C5A00D5C429 /* AudioTrack.swift */,
 				7050FADC28B85C6B00D5C429 /* Artist.swift */,
 				7050FADE28B85C7800D5C429 /* UserProfile.swift */,
+				7050FAE028BB8A1700D5C429 /* AuthResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				7050FAD928B85C4B00D5C429 /* Playlist.swift in Sources */,
 				7050FAD328B85C0D00D5C429 /* AuthManager.swift in Sources */,
 				7050FAC728B85B7700D5C429 /* WelcomeViewController.swift in Sources */,
+				7050FAE128BB8A1700D5C429 /* AuthResponse.swift in Sources */,
 				7050FACB28B85B8500D5C429 /* ProfileViewController.swift in Sources */,
 				7050FABD28B85B0300D5C429 /* TabBarViewController.swift in Sources */,
 				7050FA8528B760E500D5C429 /* AppDelegate.swift in Sources */,
