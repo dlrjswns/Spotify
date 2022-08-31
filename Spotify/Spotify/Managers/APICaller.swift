@@ -30,9 +30,10 @@ final class APICaller {
                         completion(.failure(APIError.failedToGetData))
                         return
                     }
-
+                    print("Sdfasfsa")
                     do {
                         let result = try JSONDecoder().decode(UserProfile.self, from: data)
+                        print("result = \(result)")
                         completion(.success(result))
                     }
                     catch {
