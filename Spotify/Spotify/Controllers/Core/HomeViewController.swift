@@ -16,6 +16,19 @@ class HomeViewController: UIViewController {
                                                             style: .done,
                                                             target: self,
                                                             action: #selector(didTappedSettings))
+        
+        fetchData()
+    }
+    
+    private func fetchData() {
+        APICaller.shared.getNewReleases { result in
+            switch result {
+            case .success(let model):
+                break
+            case .failure(let error):
+                break
+            }
+        }
     }
     
     @objc func didTappedSettings() {

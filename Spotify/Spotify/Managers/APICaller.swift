@@ -45,26 +45,68 @@ final class APICaller {
             }
         }
     
+    public func getNewReleases(completion: @escaping (Result<NewReleasesResponse, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=1"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(NewReleasesResponse.self, from: data)
+                    completion(.success(result))
+                }
+                catch {
+                    print("getNewReleases Error -\(String(describing: error))")
+                    completion(.failure(APIError.failedToGetData))
+                }
+            }
+            
+            task.resume()
+        }
+    }
+    
+    public func getFeaturedPlayLists(completion: @escaping (Result<FeaturedPlaylistsResponse, Error>) -> Void) {
+        createRequest(with: URL(string: Constants.baseAPIURL + "/browse/featured-playlists?lemit=2"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(FeaturedPlaylistsResponse.self, from: data)
+                    print("json = \(result)")
+                    completion(.success(result))
+                }
+                catch {
+                    completion(.failure(APIError.failedToGetData))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    // MARK: - Private
     enum HTTPMethod: String {
         case GET
         case POST
     }
     
-    // MARK: - Private
-    private func createRequest(with url: URL?,
-                               type: HTTPMethod,
-                               completion: @escaping (URLRequest) -> Void) {
-        AuthManager.shared.withValidToken { token in
-            guard let apiURL = url else {
-                return
+    private func createRequest(
+            with url: URL?,
+            type: HTTPMethod,
+            completion: @escaping (URLRequest) -> Void
+        ) {
+            AuthManager.shared.withValidToken { token in
+                guard let apiURL = url else {
+                    return
+                }
+                var request = URLRequest(url: apiURL)
+                request.setValue("Bearer \(token)",
+                                 forHTTPHeaderField: "Authorization")
+                request.httpMethod = type.rawValue
+                request.timeoutInterval = 30
+                completion(request)
             }
-            var request = URLRequest(url: apiURL)
-            request.setValue("Bearer \(token)",
-                             forHTTPHeaderField: "Authorization")
-            request.httpMethod = type.rawValue
-            request.timeoutInterval = 30
-            print("request = \(request)")
-            completion(request)
         }
-    }
 }

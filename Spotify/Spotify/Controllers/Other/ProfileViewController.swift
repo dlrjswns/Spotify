@@ -44,9 +44,10 @@ class ProfileViewController: UIViewController {
         APICaller.shared.getCurrentUserProfile { [weak self] result in
             switch result {
                 case .success(let model):
-                    print("model = \(model)")
-                    self?.updateUI(with: model)
-                case .failure(let _):
+                    DispatchQueue.main.async {
+                        self?.updateUI(with: model)
+                    }
+                case .failure(_):
                     DispatchQueue.main.async {
                         self?.failedToGetProfile()
                     }

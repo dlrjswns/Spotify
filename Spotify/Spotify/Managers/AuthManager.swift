@@ -105,7 +105,7 @@ final class AuthManager {
     private var onRefreshBlocks = [(String) -> Void]()
     
     /// Supplies valid token to be used with API Calls
-        public func withValidToken(completion: @escaping (String) -> Void) {
+    public func withValidToken(completion: @escaping (String) -> Void) {
             guard !refreshingToken else {
                 // Append the compleiton
                 onRefreshBlocks.append(completion)
@@ -195,13 +195,14 @@ final class AuthManager {
         }
     
     private func cacheToken(result: AuthResponse) {
-        UserDefaults.standard.setValue(result.access_token,
-                                       forKey: "access_token")
-        if let refresh_token = result.refresh_token {
-            UserDefaults.standard.setValue(refresh_token,
-                                           forKey: "refresh_token")
+            UserDefaults.standard.setValue(result.access_token,
+                                           forKey: "access_token")
+            if let refresh_token = result.refresh_token {
+                UserDefaults.standard.setValue(refresh_token,
+                                               forKey: "refresh_token")
+            }
+            UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)),
+                                           forKey: "expirationDate")
         }
-        UserDefaults.standard.setValue(Date().addingTimeInterval(TimeInterval(result.expires_in)),
-                                       forKey: "expirationDate")
-    }
+
 }
