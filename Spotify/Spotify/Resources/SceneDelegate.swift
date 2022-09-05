@@ -18,9 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: scene)
-        APICaller.shared.getFeaturedPlayLists { result in
-
-        }
+        
         if AuthManager.shared.isSignedIn {
             AuthManager.shared.refreshIfNeeded(completion: nil)
             window?.rootViewController = TabBarViewController()

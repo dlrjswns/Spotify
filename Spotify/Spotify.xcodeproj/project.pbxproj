@@ -38,6 +38,8 @@
 		7050FAE528C0865600D5C429 /* NewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAE428C0865600D5C429 /* NewReleasesResponse.swift */; };
 		7050FAE728C0885D00D5C429 /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAE628C0885D00D5C429 /* APIImage.swift */; };
 		7050FAE928C0E20F00D5C429 /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAE828C0E20F00D5C429 /* FeaturedPlaylistsResponse.swift */; };
+		7050FAEB28C307F700D5C429 /* RecommendedGenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAEA28C307F700D5C429 /* RecommendedGenresResponse.swift */; };
+		7050FAED28C5C54700D5C429 /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FAEC28C5C54700D5C429 /* RecommendationsResponse.swift */; };
 		75F2660C2D471B7797F3FD47 /* Pods_Spotify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88275BAE327BCA8E64CF6B88 /* Pods_Spotify.framework */; };
 		ED4419DD3B1C3CE1083BA8A2 /* Pods_Spotify_SpotifyUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ABAB523707DC0C2EE637FFF /* Pods_Spotify_SpotifyUITests.framework */; };
 /* End PBXBuildFile section */
@@ -97,6 +99,8 @@
 		7050FAE428C0865600D5C429 /* NewReleasesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesResponse.swift; sourceTree = "<group>"; };
 		7050FAE628C0885D00D5C429 /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		7050FAE828C0E20F00D5C429 /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
+		7050FAEA28C307F700D5C429 /* RecommendedGenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedGenresResponse.swift; sourceTree = "<group>"; };
+		7050FAEC28C5C54700D5C429 /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
 		88275BAE327BCA8E64CF6B88 /* Pods_Spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A268BA4D00F688998242E922 /* Pods-Spotify-SpotifyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-SpotifyUITests.release.xcconfig"; path = "Target Support Files/Pods-Spotify-SpotifyUITests/Pods-Spotify-SpotifyUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B7AE2CEDD6A13934AA899BB0 /* Pods-Spotify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.release.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.release.xcconfig"; sourceTree = "<group>"; };
@@ -225,6 +229,8 @@
 				7050FAE428C0865600D5C429 /* NewReleasesResponse.swift */,
 				7050FAE628C0885D00D5C429 /* APIImage.swift */,
 				7050FAE828C0E20F00D5C429 /* FeaturedPlaylistsResponse.swift */,
+				7050FAEA28C307F700D5C429 /* RecommendedGenresResponse.swift */,
+				7050FAEC28C5C54700D5C429 /* RecommendationsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -546,8 +552,10 @@
 				7050FAC528B85B6E00D5C429 /* AuthViewController.swift in Sources */,
 				7050FAC928B85B7F00D5C429 /* SettingViewController.swift in Sources */,
 				7050FA8728B760E500D5C429 /* SceneDelegate.swift in Sources */,
+				7050FAEB28C307F700D5C429 /* RecommendedGenresResponse.swift in Sources */,
 				7050FADF28B85C7800D5C429 /* UserProfile.swift in Sources */,
 				7050FACF28B85B9600D5C429 /* PlaylistViewController.swift in Sources */,
+				7050FAED28C5C54700D5C429 /* RecommendationsResponse.swift in Sources */,
 				7050FADD28B85C6B00D5C429 /* Artist.swift in Sources */,
 				7050FAC128B85B4200D5C429 /* LibraryViewController.swift in Sources */,
 				7050FACD28B85B8D00D5C429 /* PlayerViewController.swift in Sources */,
