@@ -27,8 +27,8 @@ struct Album: Decodable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.album_type = try values.decode(String.self, forKey: .albumType)
-        self.available_markets = try values.decode([String].self, forKey: .availableMarkets)
+        self.album_type = (try? values.decode(String.self, forKey: .albumType)) ?? ""
+        self.available_markets = (try? values.decode([String].self, forKey: .availableMarkets)) ?? []
         self.id = try values.decode(String.self, forKey: .id)
         self.images = try values.decode([APIImage].self, forKey: .images)
         self.name = try values.decode(String.self, forKey: .name)
