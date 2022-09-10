@@ -9,4 +9,13 @@ import Foundation
 
 struct RecommendedGenresResponse: Decodable {
     let genres: [String]
+    
+    enum CodingKeys: String, CodingKey {
+        case genres
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.genres = (try? container.decode([String].self, forKey: .genres)) ?? []
+    }
 }

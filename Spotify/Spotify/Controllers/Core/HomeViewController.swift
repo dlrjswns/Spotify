@@ -235,6 +235,7 @@ class HomeViewController: UIViewController {
 
             switch result {
             case .success(let model):
+                print("model12 = \(model)")
                 featuredPlaylist = model
             case .failure(let error):
                 print(error.localizedDescription)
@@ -273,8 +274,6 @@ class HomeViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        print("sdfsafd??SF")
         
         group.notify(queue: .main) {
             guard let newAlbums = newReleases?.albums.items,
@@ -343,12 +342,12 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let type = sections[section]
         switch type {
-        case .newReleases(let viewModels):
-            return viewModels.count
-        case .featuredPlaylists(let viewModels):
-            return viewModels.count
-        case .recommendedTracks(let viewModels):
-            return viewModels.count
+            case .newReleases(let viewModels):
+                return viewModels.count
+            case .featuredPlaylists(let viewModels):
+                return viewModels.count
+            case .recommendedTracks(let viewModels):
+                return viewModels.count
         }
     }
     
@@ -358,7 +357,9 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         switch type {
         case .newReleases(let viewModels):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewReleaseCollectionViewCell.identifier, for: indexPath) as? NewReleaseCollectionViewCell ?? NewReleaseCollectionViewCell()
-            cell.backgroundColor = .systemRed
+            let viewModel = viewModels[indexPath.row]
+            cell.configureUI(with: viewModel)
+            
             return cell
         case .featuredPlaylists(let viewModels):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier, for: indexPath) as? FeaturedPlaylistCollectionViewCell ?? FeaturedPlaylistCollectionViewCell()
