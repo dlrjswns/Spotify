@@ -50,7 +50,15 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        albumCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        albumCoverImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        albumCoverImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        albumCoverImageView.widthAnchor.constraint(equalToConstant: contentView.frame.height).isActive = true
         
+        albumNameLabel.topAnchor.constraint(equalTo: albumCoverImageView.topAnchor).isActive = true
+        albumNameLabel.leftAnchor.constraint(equalTo: albumCoverImageView.rightAnchor).isActive = true
+        albumNameLabel.rightAnchor.constraint(equalTo: contentView.rightAnchor).isActive = true
+//        albumNameLabel.heightAnchor.constraint(equalToConstant: <#T##CGFloat#>)
     }
     
     override func prepareForReuse() {

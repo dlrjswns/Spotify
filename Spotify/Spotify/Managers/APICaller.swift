@@ -20,6 +20,31 @@ final class APICaller {
         case failedToGetData
     }
     
+    // MARK: - Albums
+    public func getAlbumDetails(for album: Album, completion: @escaping ((Result<String, Error>) -> Void)) {
+        createRequest(
+            with: URL(string: Constants.baseAPIURL + "/albums/" + album.id),
+            type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, _, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let json = try JSONSerialization.jsonObject(with: data)
+                    print(json)
+                }
+                catch {
+                    completion(.failure(APIError.failedToGetData))
+                }
+            }
+            
+            task.resume()
+        }
+        
+    }
+    
     public func getCurrentUserProfile(completion: @escaping (Result<UserProfile, Error>) -> Void) {
             createRequest(
                 with: URL(string: Constants.baseAPIURL + "/me"),

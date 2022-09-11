@@ -351,6 +351,28 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+        let section = sections[indexPath.section]
+        switch section {
+            case .newReleases:
+                let album = newAlbums[indexPath.row]
+                let vc = AlbumViewController(album: album)
+                vc.title = album.name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
+            case .recommendedTracks(let viewModels):
+                break
+            case .featuredPlaylists:
+                let playList = playlists[indexPath.row]
+                let vc = PlaylistViewController(playList: playList)
+                vc.title = playList.name
+                vc.navigationItem.largeTitleDisplayMode = .never
+                self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let type = sections[indexPath.section]
@@ -363,7 +385,8 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         case .featuredPlaylists(let viewModels):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier, for: indexPath) as? FeaturedPlaylistCollectionViewCell ?? FeaturedPlaylistCollectionViewCell()
-            cell.backgroundColor = .blue
+            let viewModel = viewModels[indexPath.row]
+            cell.configureUI(with: viewModel)
             return cell
         case .recommendedTracks(let viewModels):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedTrackCollectionViewCell.identifier, for: indexPath) as? RecommendedTrackCollectionViewCell ?? RecommendedTrackCollectionViewCell()
