@@ -10,6 +10,12 @@ import UIKit
 class PlaylistViewController: UIViewController {
     private let playList: Playlist
     
+//    private let collectionView: UICollectionView = {
+//        let layout = UICollectionViewCompositionalLayout(
+//        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+//        return collectionView
+//    }()
+    
     init(playList: Playlist) {
         self.playList = playList
         super.init(nibName: nil, bundle: nil)
@@ -23,5 +29,14 @@ class PlaylistViewController: UIViewController {
         super.viewDidLoad()
         title = playList.name
         view.backgroundColor = .systemBackground
+        
+        APICaller.shared.getPlaylistDetails(for: playList) { result in
+            switch result {
+                case .success(let model):
+                    print("model = \(model)")
+                case .failure(let error):
+                    print("getPlaylistDetails error occured = \(error.localizedDescription)")
+            }
+        }
     }
 }

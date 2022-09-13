@@ -105,6 +105,33 @@
 * 마지막으로 notify(queue:)를 이용하여 해당 그룹의 모든 task가 leave되기를 대기하고있다가 전부 leave한다면 notify의 블록을 실행하게 됩니다
 
 # defer
+* defer는 이를 쓴 해당 함수내부의 동작을 모든 마치고 함수를 종료하기직전에 실행할 구문을 작성할 수 있는 역할을 담당
+
+```Swift
+// New Releases
+    APICaller.shared.getNewReleases { result in
+        defer {
+            print("ASdfasdf?")
+            group.leave()
+        }
+        switch result {
+        case .success(let model):
+            print("뭐임 = \(model)")
+            newReleases = model
+        case .failure(let error):
+            print(error.localizedDescription)
+        }
+    }
+```
+* 위 코드는 앞서 설명했던 DispatchGroup에서 그룹으로 묶은 해당 작업을 notify를 통해 대기하는 코드를 작성할 경우 
+  우리가 의도한바로 동작하기위해선 반드시 APICaller를 통해 호출한 데이터작업이 성공하든 실패하든 동작을 마치면 해당 그룹에 leave를 통해 알려줘야한다 
+
+* 위와 같은 이유로 defer를 함수를 이용해 항상 동작의 마무리에 leave를 이용해 알려준다 
 
 # ContainerView
+* 보통 하나의 뷰 컨트롤러에서는 하나의 루트 뷰를 담당하게 된다, 허나 이때 내가 원하는 뷰 컨트롤러에서 다른 뷰 컨트롤러의 루트 뷰를 관리하고자할때 
+  ContainerView를 사용할 수 있다 
+
+* 이때 사용하는것이 내가 ContainerViewController로써 역할을 하고자하는 뷰 컨트롤러에 원하는 뷰 컨트롤러를 addChild를 이용해 추가해주고 
+  addSubView를 이용해 뷰를 추가해준다면 원하는 작업이 가능하다
 
