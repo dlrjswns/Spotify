@@ -1,4 +1,67 @@
 # UICompositionalLayout
+* UICompositionalLayout은 복잡한 UICollectionView를 구성하기위해 사용할 수 있는 UI이다
+* UICollectionView를 생성할때 생성자 두번째 layout인자에 넣어줄 수 있다
+
+## UICompositionalLayout 사용법
+``Swift
+let item = NSCollectionLayoutItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .fractionalHeight(1.0)
+                )
+            )
+
+            item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+
+            // Vertical group in horizontal group
+            let verticalGroup = NSCollectionLayoutGroup.vertical(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1.0),
+                    heightDimension: .absolute(390)
+                ),
+                subitem: item,
+                count: 3
+            )
+
+            let horizontalGroup = NSCollectionLayoutGroup.horizontal(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(0.9),
+                    heightDimension: .absolute(390)
+                ),
+                subitem: verticalGroup,
+                count: 1
+            )
+
+            // Section
+            let section = NSCollectionLayoutSection(group: horizontalGroup)
+            section.orthogonalScrollingBehavior = .groupPaging
+            section.boundarySupplementaryItems = supplementaryViews
+            return section
+```
+* section, group, item 단위로 각각 만들어줄 수 있다 
+* 아마 section과 item은 감이 오겠지만 group은 생소할 수 있는데 쉽게 이해하기위해 한 줄에 몇개를 표현할 것인가를 생각해보면 이해가 수월할 것이다 
+* 위 코드에서 group을 확인해보면 count를 이용하여 한줄에 몇개를 삽입해줄것인지 표현가능하고 subitem으로 verticalGroup을 넣어서 horizontalGroup에 vertical대로 쌓인 데이터를 가로로 넘기게 가능하다 
+
+```Swift
+let supplementaryViews = [
+    NSCollectionLayoutBoundarySupplementaryItem(
+        layoutSize: NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(50)
+        ),
+        elementKind: UICollectionView.elementKindSectionHeader,
+        alignment: .top
+    )
+]
+
+let section = NSCollectionLayoutSection(group: horizontalGroup)
+section.orthogonalScrollingBehavior = .groupPaging
+section.boundarySupplementaryItems = supplementaryViews
+return section
+```
+* 위 코드는 기존 UICollectionView에서 헤더를 넣어줄때처럼 하나의 섹션을 잡아 header를 추가가능하다 
+* UICompositionalLayout에서 header를 삽입할때는 위 코드에서처럼 boundarySupplementaryItems를 사용하였고 
+  elementKind와 alignment를 이용하여 header를 넣어줄 수 있다 
 
 # DispatchGroup
 * 우리는 기존에 다수의 스레드를 관리하기위해 DispatchQueue를 이용하여 관리하였습니다 

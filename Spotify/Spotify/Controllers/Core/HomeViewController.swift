@@ -75,15 +75,15 @@ class HomeViewController: UIViewController {
     
     private static func createSectionLayout(sectionIndex: Int) -> NSCollectionLayoutSection {
         let supplementaryViews = [
-                    NSCollectionLayoutBoundarySupplementaryItem(
-                        layoutSize: NSCollectionLayoutSize(
-                            widthDimension: .fractionalWidth(1),
-                            heightDimension: .absolute(50)
-                        ),
-                        elementKind: UICollectionView.elementKindSectionHeader,
-                        alignment: .top
-                    )
-                ]
+            NSCollectionLayoutBoundarySupplementaryItem(
+                layoutSize: NSCollectionLayoutSize(
+                    widthDimension: .fractionalWidth(1),
+                    heightDimension: .absolute(50)
+                ),
+                elementKind: UICollectionView.elementKindSectionHeader,
+                alignment: .top
+            )
+        ]
 
         switch sectionIndex {
             case 0:
