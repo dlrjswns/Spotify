@@ -11,6 +11,17 @@ enum BrowseSectionType {
     case newReleases([NewReleasesCellViewModel])
     case featuredPlaylists([FeaturedPlaylistCellViewModel])
     case recommendedTracks([RecommendedTrackCellViewModel])
+    
+    var title: String {
+        switch self {
+            case .newReleases(_):
+                return "New Released Albums"
+            case .featuredPlaylists(_):
+                return "Featured Playlists"
+            case .recommendedTracks(_):
+                return "Recommended"
+        }
+    }
 }
 
 class HomeViewController: UIViewController {
@@ -69,6 +80,7 @@ class HomeViewController: UIViewController {
         collectionView.register(NewReleaseCollectionViewCell.self, forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
         collectionView.register(FeaturedPlaylistCollectionViewCell.self, forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
         collectionView.register(RecommendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
+        collectionView.register(TitleHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -393,5 +405,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.backgroundColor = .orange
             return cell
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: TitleHeaderCollectionReusableView.identifier, for: indexPath) as? TitleHeaderCollectionReusableView ?? TitleHeaderCollectionReusableView()
+        let section = indexPath.section
+        let title = sections[section].title
+        header.configureUI(with: title)
+        return header
     }
 }

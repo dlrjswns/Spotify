@@ -198,3 +198,6 @@ return section
 * 이때 사용하는것이 내가 ContainerViewController로써 역할을 하고자하는 뷰 컨트롤러에 원하는 뷰 컨트롤러를 addChild를 이용해 추가해주고 
   addSubView를 이용해 뷰를 추가해준다면 원하는 작업이 가능하다
 
+# NotificationCenter
+
+# UISearchController
