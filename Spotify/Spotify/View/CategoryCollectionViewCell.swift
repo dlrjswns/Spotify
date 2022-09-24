@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import SDWebImage
 
-class GenreCollectionViewCell: UICollectionViewCell {
+class CategoryCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "GenreCollectionViewCell"
+    static let identifier = "CategoryCollectionViewCell"
     
     private let imageView: UIImageView = {
        let imageView = UIImageView()
@@ -63,8 +64,9 @@ class GenreCollectionViewCell: UICollectionViewCell {
         label.text = nil
     }
     
-    public func configureUI(with title: String) {
-        label.text = title
+    public func configureUI(with viewModel: CategoryCollectionViewCellViewModel) {
+        label.text = viewModel.title
+        imageView.sd_setImage(with: viewModel.artworkURL)
         contentView.backgroundColor = colors.randomElement()
     }
 }

@@ -9,6 +9,8 @@ import UIKit
 
 class SearchViewController: UIViewController, UISearchResultsUpdating {
     
+    private var categories = [Category]()
+    
     let searchController: UISearchController = {
 //        let results = UIViewController()
 //        results.view.backgroundColor = .red
@@ -56,10 +58,22 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         searchController.searchResultsUpdater = self
         navigationItem.searchController = searchController
         view.addSubview(collectionView)
-        collectionView.register(GenreCollectionViewCell.self, forCellWithReuseIdentifier: GenreCollectionViewCell.identifier)
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
+        
+        APICaller.shared.getCategories { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                    case .success(let categories):
+                        self?.categories = categories
+                        self?.collectionView.reloadData()
+                    case .failure(let error):
+                        break
+                }
+            }
+        }
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -81,8 +95,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.identifier, for: indexPath) as? GenreCollectionViewCell ?? GenreCollectionViewCell()
-        cell.configureUI(with: "Rock")
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell ?? CategoryCollectionViewCell()
+        let category = categories[indexPath.row]
+        cell.configureUI(with: CategoryCollectionViewCellViewModel(title: category.name, artworkURL: URL(string: category.icons.first?.url ?? "")))
         return cell
     }
 }
