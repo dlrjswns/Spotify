@@ -10,6 +10,8 @@
 		20F4451841837EF7D34C4265 /* Pods_SpotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EFE6ADD5FA23AF8AD649B5 /* Pods_SpotifyTests.framework */; };
 		704E25C128DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C028DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift */; };
 		704E25C328DF379900E94ACC /* CagetoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C228DF379900E94ACC /* CagetoryViewController.swift */; };
+		704E25C528E07BA900E94ACC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */; };
+		704E25C728E07CA800E94ACC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C628E07CA800E94ACC /* SearchResult.swift */; };
 		7050FA8528B760E500D5C429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FA8428B760E500D5C429 /* AppDelegate.swift */; };
 		7050FA8728B760E500D5C429 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FA8628B760E500D5C429 /* SceneDelegate.swift */; };
 		7050FA8E28B760E700D5C429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7050FA8D28B760E700D5C429 /* Assets.xcassets */; };
@@ -85,6 +87,8 @@
 		6E0BFA69E00F9E2BC48041E0 /* Pods-Spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.debug.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.debug.xcconfig"; sourceTree = "<group>"; };
 		704E25C028DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		704E25C228DF379900E94ACC /* CagetoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CagetoryViewController.swift; sourceTree = "<group>"; };
+		704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
+		704E25C628E07CA800E94ACC /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		7050FA8128B760E500D5C429 /* Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7050FA8428B760E500D5C429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7050FA8628B760E500D5C429 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 				7083D1FC28CE2BEE007C8E1E /* AlbumDetailsResponse.swift */,
 				7083D1FE28CF489E007C8E1E /* PlaylistDetailsResponse.swift */,
 				7083D20F28DAA6DD007C8E1E /* AllCategoriesResponse.swift */,
+				704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */,
+				704E25C628E07CA800E94ACC /* SearchResult.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -612,6 +618,7 @@
 				7050FACB28B85B8500D5C429 /* ProfileViewController.swift in Sources */,
 				7050FABD28B85B0300D5C429 /* TabBarViewController.swift in Sources */,
 				7050FA8528B760E500D5C429 /* AppDelegate.swift in Sources */,
+				704E25C728E07CA800E94ACC /* SearchResult.swift in Sources */,
 				7050FAE328BEF22000D5C429 /* SettingsModels.swift in Sources */,
 				7050FAFA28C8CA3600D5C429 /* RecommendedTrackCellViewModel.swift in Sources */,
 				7050FAD728B85C3000D5C429 /* HapticsManager.swift in Sources */,
@@ -631,6 +638,7 @@
 				7083D20628D83F93007C8E1E /* TitleHeaderCollectionReusableView.swift in Sources */,
 				704E25C128DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift in Sources */,
 				7083D20E28D9AF29007C8E1E /* CategoryCollectionViewCell.swift in Sources */,
+				704E25C528E07BA900E94ACC /* SearchResultsResponse.swift in Sources */,
 				7050FADD28B85C6B00D5C429 /* Artist.swift in Sources */,
 				7050FAC128B85B4200D5C429 /* LibraryViewController.swift in Sources */,
 				7083D20A28D98FF1007C8E1E /* AlbumCollectionViewCellViewModel.swift in Sources */,

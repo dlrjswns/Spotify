@@ -44,11 +44,13 @@ class CategoryViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        APICaller.shared.getCategoryPlaylists(category: category) { result in
+        APICaller.shared.getCategoryPlaylists(category: category) { [weak self] result in
+            guard let `self` = self else { return }
             switch result {
                 case .failure(let error): break
                 case .success(let playlists):
                     self.playlists = playlists
+                    self.collectionView.reloadData()
             }
         }
     }
@@ -73,5 +75,12 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
                                                              artworkURL: URL(string: playlist.images.first?.url ?? ""),
                                                              creatorName: playlist.owner.display_name))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let vc = PlaylistViewController(playList: playlists[indexPath.row])
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

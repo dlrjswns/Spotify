@@ -56,6 +56,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         searchController.searchResultsUpdater = self
+        searchController.searchBar.delegate = self
         navigationItem.searchController = searchController
         view.addSubview(collectionView)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
@@ -77,11 +78,6 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchResultsController = searchController.searchResultsController as? SearchResultViewController,
-              let query = searchController.searchBar.text,
-              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
-            return
-        }
     }
 }
 
@@ -99,5 +95,32 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let category = categories[indexPath.row]
         cell.configureUI(with: CategoryCollectionViewCellViewModel(title: category.name, artworkURL: URL(string: category.icons.first?.url ?? "")))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let category = categories[indexPath.row]
+        let vc = CategoryViewController(category: category)
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchResultsController = searchController.searchResultsController as? SearchResultViewController,
+              let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return
+        }
+        
+        APICaller.shared.search(with: query) { result in
+            switch result {
+                case .failure(let error):
+                    break
+                case .success(let results):
+                searchResultsController.update(with: results)
+            }
+        }
     }
 }
