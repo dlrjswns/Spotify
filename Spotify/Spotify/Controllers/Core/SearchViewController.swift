@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SearchViewController: UIViewController, UISearchResultsUpdating {
     
@@ -114,6 +115,8 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         
+        searchResultsController.delegate = self
+        
         APICaller.shared.search(with: query) { result in
             switch result {
                 case .failure(let error):
@@ -121,6 +124,29 @@ extension SearchViewController: UISearchBarDelegate {
                 case .success(let results):
                 searchResultsController.update(with: results)
             }
+        }
+    }
+}
+
+extension SearchViewController: SearchResultsViewControllerDelegate {
+    func didTapResult(_ result: SearchResult) {
+        switch result {
+            case .artist(let model):
+                guard let url = URL(string: model.external_urls["spotify"] ?? "") else {
+                    return
+                }
+                let vc = SFSafariViewController(url: url)
+                present(vc, animated: true)
+            case .track(let model):
+                break
+            case .album(let model):
+                let vc = AlbumViewController(album: model)
+                vc.navigationItem.largeTitleDisplayMode = .never
+                navigationController?.pushViewController(vc, animated: true)
+            case .playlist(let model):
+                let vc = PlaylistViewController(playList: model)
+                vc.navigationItem.largeTitleDisplayMode = .never
+                navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

@@ -12,6 +12,8 @@
 		704E25C328DF379900E94ACC /* CagetoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C228DF379900E94ACC /* CagetoryViewController.swift */; };
 		704E25C528E07BA900E94ACC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */; };
 		704E25C728E07CA800E94ACC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C628E07CA800E94ACC /* SearchResult.swift */; };
+		704E25CA28E1DAB900E94ACC /* SearchResultDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C928E1DAB900E94ACC /* SearchResultDefaultTableViewCell.swift */; };
+		704E25CC28E1DE9800E94ACC /* SearchResultSubtitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25CB28E1DE9800E94ACC /* SearchResultSubtitleTableViewCell.swift */; };
 		7050FA8528B760E500D5C429 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FA8428B760E500D5C429 /* AppDelegate.swift */; };
 		7050FA8728B760E500D5C429 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7050FA8628B760E500D5C429 /* SceneDelegate.swift */; };
 		7050FA8E28B760E700D5C429 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7050FA8D28B760E700D5C429 /* Assets.xcassets */; };
@@ -89,6 +91,8 @@
 		704E25C228DF379900E94ACC /* CagetoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CagetoryViewController.swift; sourceTree = "<group>"; };
 		704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
 		704E25C628E07CA800E94ACC /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		704E25C928E1DAB900E94ACC /* SearchResultDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDefaultTableViewCell.swift; sourceTree = "<group>"; };
+		704E25CB28E1DE9800E94ACC /* SearchResultSubtitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCell.swift; sourceTree = "<group>"; };
 		7050FA8128B760E500D5C429 /* Spotify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spotify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7050FA8428B760E500D5C429 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7050FA8628B760E500D5C429 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +191,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		704E25C828E1DA9D00E94ACC /* SearchResultCells */ = {
+			isa = PBXGroup;
+			children = (
+				704E25C928E1DAB900E94ACC /* SearchResultDefaultTableViewCell.swift */,
+				704E25CB28E1DE9800E94ACC /* SearchResultSubtitleTableViewCell.swift */,
+			);
+			path = SearchResultCells;
+			sourceTree = "<group>";
+		};
 		7050FA7828B760E500D5C429 = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +265,7 @@
 		7050FAB528B859FF00D5C429 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				704E25C828E1DA9D00E94ACC /* SearchResultCells */,
 				7050FAEE28C72D7500D5C429 /* Browse */,
 				7050FA8F28B760E700D5C429 /* LaunchScreen.storyboard */,
 				7083D20328D62134007C8E1E /* PlaylistHeaderCollectionReuseableView.swift */,
@@ -620,6 +634,7 @@
 				7050FA8528B760E500D5C429 /* AppDelegate.swift in Sources */,
 				704E25C728E07CA800E94ACC /* SearchResult.swift in Sources */,
 				7050FAE328BEF22000D5C429 /* SettingsModels.swift in Sources */,
+				704E25CA28E1DAB900E94ACC /* SearchResultDefaultTableViewCell.swift in Sources */,
 				7050FAFA28C8CA3600D5C429 /* RecommendedTrackCellViewModel.swift in Sources */,
 				7050FAD728B85C3000D5C429 /* HapticsManager.swift in Sources */,
 				7083D21028DAA6DD007C8E1E /* AllCategoriesResponse.swift in Sources */,
@@ -632,6 +647,7 @@
 				7050FAEB28C307F700D5C429 /* RecommendedGenresResponse.swift in Sources */,
 				7050FADF28B85C7800D5C429 /* UserProfile.swift in Sources */,
 				7050FACF28B85B9600D5C429 /* PlaylistViewController.swift in Sources */,
+				704E25CC28E1DE9800E94ACC /* SearchResultSubtitleTableViewCell.swift in Sources */,
 				7083D20C28D99057007C8E1E /* Extensions.swift in Sources */,
 				7050FAED28C5C54700D5C429 /* RecommendationsResponse.swift in Sources */,
 				7083D20828D98F57007C8E1E /* AlbumTrackCollectionViewCell.swift in Sources */,
