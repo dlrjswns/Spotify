@@ -12,7 +12,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating {
     
     private var categories = [Category]()
     
-    let searchController: UISearchController = {
+    private let searchController: UISearchController = {
 //        let results = UIViewController()
 //        results.view.backgroundColor = .red
         let vc = UISearchController(searchResultsController: SearchResultViewController())

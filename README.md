@@ -201,3 +201,46 @@ return section
 # NotificationCenter
 
 # UISearchController
+* UISearchController는 UINavigationController에 추가하여 기본적으로 제공받는 디자인내에 검색화면을 구현할 수 있다 
+* 이번 Spotify에서는 UISearchController의 searchResultsController를 사용하였다 
+
+```swift
+private let searchController: UISearchController = {
+    let vc = UISearchController(searchResultsController: SearchResultViewController())
+    vc.searchBar.placeholder = "Songs, Artists, Albums"
+    vc.searchBar.searchBarStyle = .minimal
+    vc.definesPresentationContext = true
+    return vc
+}()
+
+searchController.searchResultsUpdater = self
+searchController.searchBar.delegate = self
+navigationItem.searchController = searchController
+
+func updateSearchResults(for searchController: UISearchController) {
+}
+```
+* 일반적으로 위처럼 UISearchController를 선언해줄 수 있고 해당 UISearchController내부에 SearchBar에 text가 업데이트될때마다 반응해주는 delegate메소드로 updateSearchResults도 존재한다
+
+* 하지만 Spotify에서는 검색버튼을 눌렀을때의 동작을 수행하고자하였기에 UISearchBar의 delegate메소드를 이용하였다 
+```swift
+func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    guard let searchResultsController = searchController.searchResultsController as? SearchResultViewController,
+            let query = searchBar.text,
+            !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+        return
+    }
+    
+    searchResultsController.delegate = self
+    
+    APICaller.shared.search(with: query) { result in
+        switch result {
+            case .failure(let error):
+                break
+            case .success(let results):
+            searchResultsController.update(with: results)
+        }
+    }
+}
+```
+* UISearchController의 SearchResult를 사용하게되면 특징이 SearchBar가 becomeResponder가 될때는 반응이 없다고 텍스트를 작성하는 순간 반응하여 resultController로 넣어주었던 VC가 보여지게된다, 다시 텍스트를 전부 지우면 기존 화면으로 돌아가는 형태이다
