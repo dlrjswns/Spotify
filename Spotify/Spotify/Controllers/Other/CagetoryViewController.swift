@@ -79,7 +79,7 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let vc = PlaylistViewController(playList: playlists[indexPath.row])
+      let vc = PlaylistViewController(playlist: playlists[indexPath.row])
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }

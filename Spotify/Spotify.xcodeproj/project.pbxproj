@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		20F4451841837EF7D34C4265 /* Pods_SpotifyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35EFE6ADD5FA23AF8AD649B5 /* Pods_SpotifyTests.framework */; };
+		7034AF1229EEF1E5009C7676 /* LibraryPlaylistsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7034AF1129EEF1E5009C7676 /* LibraryPlaylistsViewController.swift */; };
 		704E25C128DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C028DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift */; };
 		704E25C328DF379900E94ACC /* CagetoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C228DF379900E94ACC /* CagetoryViewController.swift */; };
 		704E25C528E07BA900E94ACC /* SearchResultsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */; };
@@ -91,6 +92,7 @@
 		2ABAB523707DC0C2EE637FFF /* Pods_Spotify_SpotifyUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify_SpotifyUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35EFE6ADD5FA23AF8AD649B5 /* Pods_SpotifyTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SpotifyTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0BFA69E00F9E2BC48041E0 /* Pods-Spotify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify.debug.xcconfig"; path = "Target Support Files/Pods-Spotify/Pods-Spotify.debug.xcconfig"; sourceTree = "<group>"; };
+		7034AF1129EEF1E5009C7676 /* LibraryPlaylistsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistsViewController.swift; sourceTree = "<group>"; };
 		704E25C028DF30D100E94ACC /* CategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		704E25C228DF379900E94ACC /* CagetoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CagetoryViewController.swift; sourceTree = "<group>"; };
 		704E25C428E07BA900E94ACC /* SearchResultsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsResponse.swift; sourceTree = "<group>"; };
@@ -197,6 +199,14 @@
 				35EFE6ADD5FA23AF8AD649B5 /* Pods_SpotifyTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7034AF1029EEF1D3009C7676 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				7034AF1129EEF1E5009C7676 /* LibraryPlaylistsViewController.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 		704E25C828E1DA9D00E94ACC /* SearchResultCells */ = {
@@ -358,6 +368,7 @@
 		7050FAC328B85B5E00D5C429 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				7034AF1029EEF1D3009C7676 /* Library */,
 				7050FAC428B85B6E00D5C429 /* AuthViewController.swift */,
 				7050FAC628B85B7700D5C429 /* WelcomeViewController.swift */,
 				7050FAC828B85B7F00D5C429 /* SettingViewController.swift */,
@@ -642,6 +653,7 @@
 			files = (
 				7050FABF28B85B1C00D5C429 /* SearchViewController.swift in Sources */,
 				7050FAD928B85C4B00D5C429 /* Playlist.swift in Sources */,
+				7034AF1229EEF1E5009C7676 /* LibraryPlaylistsViewController.swift in Sources */,
 				7050FAF428C72DF300D5C429 /* RecommendedTrackCollectionViewCell.swift in Sources */,
 				7050FAD328B85C0D00D5C429 /* AuthManager.swift in Sources */,
 				7050FAC728B85B7700D5C429 /* WelcomeViewController.swift in Sources */,
@@ -862,6 +874,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ASZ874HB9K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spotify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -889,6 +902,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ASZ874HB9K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Spotify/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

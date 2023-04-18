@@ -3,7 +3,7 @@
 * UICollectionView를 생성할때 생성자 두번째 layout인자에 넣어줄 수 있다
 
 ## UICompositionalLayout 사용법
-``Swift
+``swift
 let item = NSCollectionLayoutItem(
                 layoutSize: NSCollectionLayoutSize(
                     widthDimension: .fractionalWidth(1.0),
@@ -42,7 +42,7 @@ let item = NSCollectionLayoutItem(
 * 아마 section과 item은 감이 오겠지만 group은 생소할 수 있는데 쉽게 이해하기위해 한 줄에 몇개를 표현할 것인가를 생각해보면 이해가 수월할 것이다 
 * 위 코드에서 group을 확인해보면 count를 이용하여 한줄에 몇개를 삽입해줄것인지 표현가능하고 subitem으로 verticalGroup을 넣어서 horizontalGroup에 vertical대로 쌓인 데이터를 가로로 넘기게 가능하다 
 
-```Swift
+```swift
 let supplementaryViews = [
     NSCollectionLayoutBoundarySupplementaryItem(
         layoutSize: NSCollectionLayoutSize(
@@ -75,7 +75,7 @@ return section
 * 이때와 같은 순간에 DispatchGroup이라는 것을 사용한다면 여러개의 task를 하나의 그룹으로 묶어서 그 그룹에 속해있는 task가 종료되어야 이를 확인하고 작업해주는 코드를 작성할 수 있습니다 
 
 ## DispatchGroup의 사용법
-```Swift
+```swift
         let group = DispatchGroup()
         group.enter()
         group.enter()
@@ -170,7 +170,7 @@ return section
 # defer
 * defer는 이를 쓴 해당 함수내부의 동작을 모든 마치고 함수를 종료하기직전에 실행할 구문을 작성할 수 있는 역할을 담당
 
-```Swift
+```swift
 // New Releases
     APICaller.shared.getNewReleases { result in
         defer {
