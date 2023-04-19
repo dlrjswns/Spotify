@@ -15,8 +15,7 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
     let imageView = UIImageView()
     imageView.layer.masksToBounds = true
     imageView.layer.cornerRadius = 4
-    imageView.image = UIImage(systemName: "photo")
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleAspectFit
     return imageView
   }()
   
@@ -25,6 +24,7 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
     label.numberOfLines = 0
     label.textAlignment = .center
     label.font = .systemFont(ofSize: 18, weight: .regular)
+    label.sizeToFit()
     return label
   }()
   
@@ -33,6 +33,7 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
     label.numberOfLines = 0
     label.textAlignment = .center
     label.font = .systemFont(ofSize: 15, weight: .thin)
+    label.sizeToFit()
     return label
   }()
   
@@ -45,17 +46,17 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
     fatalError("init(coder:) has not been implemented")
   }
   
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    playlistCoverImageView.heightAnchor.constraint(equalToConstant: contentView.bounds.width - 60).isActive = true
+    playlistCoverImageView.widthAnchor.constraint(equalToConstant: contentView.bounds.width - 60).isActive = true
+  }
+  
   override func prepareForReuse() {
     super.prepareForReuse()
     playlistNameLabel.text = nil
     playlistCoverImageView.image = nil
     creatorNameLabel.text = nil
-  }
-  
-  public func configureUI(with viewModel: FeaturedPlaylistCellViewModel) {
-    playlistNameLabel.text = viewModel.name
-    playlistCoverImageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
-    creatorNameLabel.text = viewModel.creatorName
   }
   
   private func configureUI() {
@@ -64,16 +65,20 @@ class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
       contentView.addSubview($0)
     }
     
-    playlistCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 3).isActive = true
-    playlistCoverImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-    playlistCoverImageView.heightAnchor.constraint(equalToConstant: contentView.frame.height - 70).isActive = true
-    playlistCoverImageView.widthAnchor.constraint(equalToConstant: contentView.frame.height - 70).isActive = true
+    playlistCoverImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+    playlistCoverImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
     
-    playlistNameLabel.centerYAnchor.constraint(equalTo: playlistCoverImageView.centerYAnchor).isActive = true
+    playlistNameLabel.centerXAnchor.constraint(equalTo: playlistCoverImageView.centerXAnchor).isActive = true
     playlistNameLabel.topAnchor.constraint(equalTo: playlistCoverImageView.bottomAnchor, constant: 3).isActive = true
     
-    creatorNameLabel.centerYAnchor.constraint(equalTo: playlistNameLabel.centerYAnchor).isActive = true
+    creatorNameLabel.centerXAnchor.constraint(equalTo: playlistNameLabel.centerXAnchor).isActive = true
     creatorNameLabel.topAnchor.constraint(equalTo: playlistNameLabel.bottomAnchor, constant: 3).isActive = true
     
+  }
+  
+  public func configureUI(with viewModel: FeaturedPlaylistCellViewModel) {
+    playlistNameLabel.text = viewModel.name
+    playlistCoverImageView.sd_setImage(with: viewModel.artworkURL, completed: nil)
+    creatorNameLabel.text = viewModel.creatorName
   }
 }
