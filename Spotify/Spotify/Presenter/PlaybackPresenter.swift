@@ -43,7 +43,7 @@ final class PlaybackPresenter {
         from viewController: UIViewController,
         track: AudioTrack
     ) {
-        guard let url = URL(string: track.preview_url ?? "") else {
+        guard let url = URL(string: track.previewUrl ?? "") else {
             return
         }
         player = AVPlayer(url: url)
@@ -69,7 +69,7 @@ final class PlaybackPresenter {
         self.track = nil
 
         self.playerQueue = AVQueuePlayer(items: tracks.compactMap({
-            guard let url = URL(string: $0.preview_url ?? "") else {
+            guard let url = URL(string: $0.previewUrl ?? "") else {
                 return nil
             }
             return AVPlayerItem(url: url)
@@ -149,7 +149,7 @@ extension PlaybackPresenter: PlayerDataSource {
     }
 
     var imageURL: URL? {
-        return URL(string: currentTrack?.album?.images.first?.url ?? "")
+      return URL(string: currentTrack?.album?.images.first?.url ?? "")
     }
 }
 

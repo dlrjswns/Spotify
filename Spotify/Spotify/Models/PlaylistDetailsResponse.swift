@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlaylistDetailsResponse: Decodable {
+struct PlaylistDetailsResponse: Codable {
     let description: String
     let external_urls: [String: String]
     let id: String
@@ -16,10 +16,10 @@ struct PlaylistDetailsResponse: Decodable {
     let tracks: PlaylistTracksResponse
 }
 
-struct PlaylistTracksResponse: Decodable {
+struct PlaylistTracksResponse: Codable {
     let items: [PlaylistItem]
 }
 
-struct PlaylistItem: Decodable {
+struct PlaylistItem: Codable {
     let track: AudioTrack
 }

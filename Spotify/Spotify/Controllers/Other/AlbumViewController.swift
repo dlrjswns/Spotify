@@ -89,7 +89,7 @@ class AlbumViewController: UIViewController {
             APICaller.shared.saveAlbum(album: strongSelf.album) { success in
                 if success {
                     HapticsManager.shared.vibrate(for: .success)
-                    NotificationCenter.default.post(name: .albumSavedNotification, object: nil)
+//                    NotificationCenter.default.post(name: .albumSavedNotification, object: nil)
                 }
                 else {
                     HapticsManager.shared.vibrate(for: .error)
@@ -159,7 +159,7 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let headerViewModel = PlaylistHeaderViewViewModel(
             name: album.name,
             ownerName: album.artists.first?.name,
-            description: "Release Date: \(String.formattedDate(string: album.release_date))",
+            description: "Release Date: \(String.formattedDate(string: album.releaseDate))",
             artworkURL: URL(string: album.images.first?.url ?? "")
         )
         header.configure(with: headerViewModel)

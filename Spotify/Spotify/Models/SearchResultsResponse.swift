@@ -7,25 +7,25 @@
 
 import Foundation
 
-struct SearchResultsResponse: Decodable {
+struct SearchResultsResponse: Codable {
     let albums: SearchAlbumResponse
     let artists: SearchArtistsResponse
     let playlists: SearchPlaylistsResponse
     let tracks: SearchTrackssResponse
 }
 
-struct SearchAlbumResponse: Decodable {
+struct SearchAlbumResponse: Codable {
     let items: [Album]
 }
 
-struct SearchArtistsResponse: Decodable {
+struct SearchArtistsResponse: Codable {
     let items: [Artist]
 }
 
-struct SearchPlaylistsResponse: Decodable {
+struct SearchPlaylistsResponse: Codable {
     let items: [Playlist]
 }
 
-struct SearchTrackssResponse: Decodable {
+struct SearchTrackssResponse: Codable {
     let items: [AudioTrack]
 }

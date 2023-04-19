@@ -7,33 +7,33 @@
 
 import Foundation
 
-struct NewReleasesResponse: Decodable {
+struct NewReleasesResponse: Codable {
     let albums: AlbumsResponse
 }
 
-struct AlbumsResponse: Decodable {
+struct AlbumsResponse: Codable {
     let items: [Album]
 }
 
-struct Album: Decodable {
-    let album_type: String
-    let available_markets: [String]
+struct Album: Codable {
+    let albumType: String
+    let availableMarkets: [String]
     let id: String
     var images: [APIImage]
     let name: String
-    let release_date: String
-    let total_tracks: Int
+    let releaseDate: String
+    let totalTracks: Int
     let artists: [Artist]
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.album_type = (try? values.decode(String.self, forKey: .albumType)) ?? ""
-        self.available_markets = (try? values.decode([String].self, forKey: .availableMarkets)) ?? []
+        self.albumType = (try? values.decode(String.self, forKey: .albumType)) ?? ""
+        self.availableMarkets = (try? values.decode([String].self, forKey: .availableMarkets)) ?? []
         self.id = (try? values.decode(String.self, forKey: .id)) ?? ""
         self.images = (try? values.decode([APIImage].self, forKey: .images)) ?? []
         self.name = (try? values.decode(String.self, forKey: .name)) ?? ""
-        self.release_date = (try? values.decode(String.self, forKey: .releaseDate)) ?? ""
-        self.total_tracks = (try? values.decode(Int.self, forKey: .totalTracks)) ?? 0
+        self.releaseDate = (try? values.decode(String.self, forKey: .releaseDate)) ?? ""
+        self.totalTracks = (try? values.decode(Int.self, forKey: .totalTracks)) ?? 0
         self.artists = (try? values.decode([Artist].self, forKey: .albumType)) ?? []
     }
     

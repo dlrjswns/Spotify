@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct RecommendationsResponse: Decodable {
+struct RecommendationsResponse: Codable {
     let tracks: [AudioTrack]
 }

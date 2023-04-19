@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AlbumDetailsResponse: Decodable {
+struct AlbumDetailsResponse: Codable {
     let album_type: String
     let artists: [Artist]
     let available_markets: [String]
@@ -19,6 +19,6 @@ struct AlbumDetailsResponse: Decodable {
     let tracks: TracksResponse
 }
 
-struct TracksResponse: Decodable {
+struct TracksResponse: Codable {
     let items: [AudioTrack]
 }

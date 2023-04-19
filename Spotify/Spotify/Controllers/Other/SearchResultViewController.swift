@@ -98,11 +98,15 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
                 cell.configureUI(with: viewModel)
             case .track(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultSubtitleTableViewCell.identfier, for: indexPath) as? SearchResultSubtitleTableViewCell ?? SearchResultSubtitleTableViewCell()
-                let viewModel = SearchResultSubtitleTableViewCellViewModel(title: model.name, subtitle: "", imageURL: URL(string: model.images.first?.url ?? ""))
+          let viewModel = SearchResultSubtitleTableViewCellViewModel(
+            title: model.name,
+            subtitle: model.artists.first?.name ?? "-",
+            imageURL: URL(string: model.album?.images.first?.url ?? "")
+          )
                 cell.configureUI(with: viewModel)
             case .album(let model):
                 let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultSubtitleTableViewCell.identfier, for: indexPath) as? SearchResultSubtitleTableViewCell ?? SearchResultSubtitleTableViewCell()
-                let viewModel = SearchResultSubtitleTableViewCellViewModel(title: model.name, subtitle: "", imageURL: URL(string: model.images.first?.url ?? ""))
+          let viewModel = SearchResultSubtitleTableViewCellViewModel(title: model.name, subtitle: "", imageURL: URL(string: model.images.first?.url ?? ""))
                 cell.configureUI(with: viewModel)
             case .playlist(let model):
                 cell.textLabel?.text = model.name

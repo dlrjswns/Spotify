@@ -143,9 +143,10 @@ class HomeViewController: UIViewController {
         var newReleases: NewReleasesResponse?
         var featuredPlaylist: FeaturedPlaylistsResponse?
         var recommendations: RecommendationsResponse?
-
+      print("뭐야")
         // New Releases
         APICaller.shared.getNewReleases { result in
+          print("뉴릴리즈 \(result)")
             defer {
                 group.leave()
             }
@@ -159,6 +160,7 @@ class HomeViewController: UIViewController {
 
         // Featured Playlists
         APICaller.shared.getFeaturedFlaylists { result in
+          print("플레이리스트 \(result)")
             defer {
                 group.leave()
             }
@@ -174,6 +176,7 @@ class HomeViewController: UIViewController {
 
         // Recommended Tracks
         APICaller.shared.gerRecommendedGenres { result in
+          print("추천장르 \(result)")
             switch result {
             case .success(let model):
                 let genres = model.genres
@@ -204,11 +207,14 @@ class HomeViewController: UIViewController {
         }
 
         group.notify(queue: .main) {
-            guard let newAlbums = newReleases?.albums.items,
+          guard let newAlbums = newReleases?.albums.items,
                   let playlists = featuredPlaylist?.playlists.items,
                   let tracks = recommendations?.tracks else {
                 fatalError("Models are nil")
             }
+          print("앨범 \(newAlbums)")
+          print("앨범1 \(playlists)")
+          print("앨범2 \(tracks)")
             self.configureModels(
                 newAlbums: newAlbums,
                 playlists: playlists,
@@ -229,7 +235,7 @@ class HomeViewController: UIViewController {
             return NewReleasesCellViewModel(
                 name: $0.name,
                 artworkURL: URL(string: $0.images.first?.url ?? ""),
-                numberOfTracks: $0.total_tracks,
+                numberOfTracks: $0.totalTracks,
                 artistName: $0.artists.first?.name ?? "-"
             )
         })))

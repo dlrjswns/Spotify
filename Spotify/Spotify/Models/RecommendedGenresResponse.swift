@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecommendedGenresResponse: Decodable {
+struct RecommendedGenresResponse: Codable {
     let genres: [String]
     
     enum CodingKeys: String, CodingKey {

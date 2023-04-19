@@ -132,7 +132,7 @@ extension SearchViewController: SearchResultsViewControllerDelegate {
     func didTapResult(_ result: SearchResult) {
         switch result {
             case .artist(let model):
-                guard let url = URL(string: model.external_urls["spotify"] ?? "") else {
+                guard let url = URL(string: model.externalUrls["spotify"] ?? "") else {
                     return
                 }
                 let vc = SFSafariViewController(url: url)
