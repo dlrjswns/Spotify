@@ -150,9 +150,9 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
-            withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier,
+            withReuseIdentifier: PlaylistHeaderCollectionReuseableView.identifier,
             for: indexPath
-        ) as? PlaylistHeaderCollectionReusableView,
+        ) as? PlaylistHeaderCollectionReuseableView,
         kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
         }
@@ -176,7 +176,7 @@ extension AlbumViewController: UICollectionViewDelegate, UICollectionViewDataSou
 }
 
 extension AlbumViewController: PlaylistHeaderCollectionReusableViewDelegate {
-    func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
+    func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReuseableView) {
         let tracksWithAlbum: [AudioTrack] = tracks.compactMap({
             var track = $0
             track.album = self.album

@@ -1,10 +1,4 @@
 
-//
-//  PlaybackPresenter.swift
-//  Spotify
-//
-//  Created by Afraz Siddiqui on 2/20/21.
-//
 import AVFoundation
 import Foundation
 import UIKit
@@ -86,7 +80,6 @@ final class PlaybackPresenter {
 }
 
 extension PlaybackPresenter: PlayerViewControllerDelegate {
-    
     func didTapPlayPause() {
         if let player = player {
             if player.timeControlStatus == .playing {
@@ -149,7 +142,7 @@ extension PlaybackPresenter: PlayerDataSource {
     }
 
     var imageURL: URL? {
-      return URL(string: currentTrack?.album?.images.first?.url ?? "")
+        return URL(string: currentTrack?.album?.images.first?.url ?? "")
     }
 }
 

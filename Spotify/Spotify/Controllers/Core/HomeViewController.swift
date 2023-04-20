@@ -210,7 +210,8 @@ class HomeViewController: UIViewController {
       guard let newAlbums = newReleases?.albums.items,
             let playlists = featuredPlaylist?.playlists.items,
             let tracks = recommendations?.tracks else {
-        fatalError("Models are nil")
+//        fatalError("Models are nil")
+        return
       }
       print("앨범 \(newAlbums)")
       print("앨범1 \(playlists)")
