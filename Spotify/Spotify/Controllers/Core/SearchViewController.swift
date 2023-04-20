@@ -59,11 +59,7 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
     searchController.searchResultsUpdater = self
     searchController.searchBar.delegate = self
     navigationItem.searchController = searchController
-    view.addSubview(collectionView)
-    collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
-    collectionView.delegate = self
-    collectionView.dataSource = self
-    collectionView.backgroundColor = .systemBackground
+    setCollectionView(collectionView)
     
     APICaller.shared.getCategories { [weak self] result in
       DispatchQueue.main.async {
@@ -76,6 +72,19 @@ class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchB
         }
       }
     }
+  }
+  
+  private func setCollectionView(_ collectionView: UICollectionView) {
+    view.addSubview(collectionView)
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+    collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+    collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
+    collectionView.delegate = self
+    collectionView.dataSource = self
+    collectionView.backgroundColor = .systemBackground
   }
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {

@@ -32,11 +32,28 @@ class PlayerViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     view.backgroundColor = .systemBackground
-    view.addSubview(imageView)
-    view.addSubview(controlsView)
+    [imageView, controlsView].map {
+      view.addSubview($0)
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
     controlsView.delegate = self
     configureBarButtons()
     configure()
+  }
+  
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+    imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+    imageView.heightAnchor.constraint(equalToConstant: view.bounds.width).isActive = true
+    
+    controlsView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+    controlsView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10).isActive = true
+    controlsView.widthAnchor.constraint(equalToConstant: view.bounds.width - 20).isActive
+     = true
+    controlsView.heightAnchor.constraint(equalToConstant: 300).isActive = true
+    
   }
   
   private func configure() {
