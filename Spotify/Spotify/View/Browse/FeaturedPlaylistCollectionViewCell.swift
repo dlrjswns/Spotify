@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
+final class FeaturedPlaylistCollectionViewCell: UICollectionViewCell {
   
   static let identifier = "FeaturedPlaylistCollectionViewCell"
   

@@ -8,7 +8,7 @@
 import SDWebImage
 import UIKit
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     private var models = [String]()
     

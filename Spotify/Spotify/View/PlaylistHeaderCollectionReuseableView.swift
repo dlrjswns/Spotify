@@ -12,7 +12,7 @@ protocol PlaylistHeaderCollectionReusableViewDelegate: AnyObject {
   func playlistHeaderCollectionReusableViewDidTapPlayAll(_ header: PlaylistHeaderCollectionReuseableView)
 }
 
-class PlaylistHeaderCollectionReuseableView: UICollectionReusableView {
+final class PlaylistHeaderCollectionReuseableView: UICollectionReusableView {
   
   static let identifier = "PlaylistHeaderCollectionReuseableView"
   

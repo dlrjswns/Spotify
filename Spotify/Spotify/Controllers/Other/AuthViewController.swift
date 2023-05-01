@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
     
     private let webView: WKWebView = {
         let prefs = WKWebpagePreferences()

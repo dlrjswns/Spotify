@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlaylistViewController: UIViewController {
+final class PlaylistViewController: UIViewController {
   private let playlist: Playlist
   
   public var isOwner = false

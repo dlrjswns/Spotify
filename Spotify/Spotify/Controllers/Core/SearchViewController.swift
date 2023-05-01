@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
+final class SearchViewController: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
   
   private var categories = [Category]()
   

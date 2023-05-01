@@ -39,11 +39,7 @@ final class SearchResultSubtitleTableViewCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
-    contentView.addSubview(label)
-    contentView.addSubview(subtitleLabel)
-    contentView.addSubview(iconImageViewe)
-    contentView.clipsToBounds = true
-    accessoryType = .disclosureIndicator
+    configureUI()
   }
   
   required init?(coder: NSCoder) {
@@ -60,6 +56,25 @@ final class SearchResultSubtitleTableViewCell: UITableViewCell {
     iconImageViewe.image = nil
     label.text = nil
     subtitleLabel.text = nil
+  }
+  
+  private func configureUI() {
+    [label, subtitleLabel, iconImageViewe].forEach {
+      contentView.addSubview($0)
+      $0.translatesAutoresizingMaskIntoConstraints = false
+    }
+    iconImageViewe.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
+    iconImageViewe.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+    iconImageViewe.widthAnchor.constraint(equalToConstant: contentView.bounds.height - 10).isActive = true
+    iconImageViewe.heightAnchor.constraint(equalToConstant: contentView.bounds.height - 10).isActive = true
+    
+    label.topAnchor.constraint(equalTo: iconImageViewe.topAnchor).isActive = true
+    label.leadingAnchor.constraint(equalTo: iconImageViewe.trailingAnchor, constant: 10).isActive = true
+    
+    subtitleLabel.bottomAnchor.constraint(equalTo: iconImageViewe.bottomAnchor).isActive = true
+    subtitleLabel.leadingAnchor.constraint(equalTo: label.leadingAnchor).isActive = true
+    contentView.clipsToBounds = true
+    accessoryType = .disclosureIndicator
   }
   
   func configureUI(with viewModel: SearchResultSubtitleTableViewCellViewModel) {

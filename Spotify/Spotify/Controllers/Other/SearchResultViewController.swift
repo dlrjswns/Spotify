@@ -101,7 +101,10 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     switch result {
     case .artist(let model):
       let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultDefaultTableViewCell.identifier, for: indexPath) as? SearchResultDefaultTableViewCell ?? SearchResultDefaultTableViewCell()
-      let viewModel = SearchResultDefaultTableViewCellViewModel(title: model.name, imageURL: URL(string: model.images?.first?.url ?? ""))
+      let viewModel = SearchResultDefaultTableViewCellViewModel(
+        title: model.name,
+        imageURL: URL(string: model.images?.first?.url ?? "")
+      )
       cell.configureUI(with: viewModel)
       return cell
     case .track(let model):
@@ -137,5 +140,9 @@ extension SearchResultViewController: UITableViewDelegate, UITableViewDataSource
     tableView.deselectRow(at: indexPath, animated: true)
     let result = sections[indexPath.section].results[indexPath.row]
     delegate?.didTapResult(result)
+  }
+  
+  func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    return sections[section].title
   }
 }
